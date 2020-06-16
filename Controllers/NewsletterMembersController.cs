@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpamProtectionDemo.Data;
-using SpamProtectionDemo.Models;
-using System.Linq;
-using System.Threading.Tasks;
 using SpamProtectionDemo.Helpers;
+using SpamProtectionDemo.Models;
 
 namespace SpamProtectionDemo.Controllers
 {
@@ -52,7 +52,7 @@ namespace SpamProtectionDemo.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[SpamProtection]
+        [SpamProtection]
         public async Task<IActionResult> Create([Bind("Email")] NewsletterMember newsletterMember)
         {
             if (ModelState.IsValid)
